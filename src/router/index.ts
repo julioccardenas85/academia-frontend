@@ -5,7 +5,9 @@ import ModuleMenu from '@/views/ModuleMenu.vue'
 import UsersMenu from '../views/users/UsersMenu.vue'
 import UsersSearch from '../views/users/UsersSearch.vue'
 import NewUser from '@/views/users/NewUser.vue'
-
+import InstructoresSearch from '@/views/instructores/InstructoresSearch.vue'
+import NewInstructor from '@/views/instructores/NewInstructor.vue'
+import GruposSearch from '@/views/grupos/GruposSearch.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -53,7 +55,28 @@ const router = createRouter({
       path: '/users/newUser',
       name: 'newUser',
       component: NewUser
-    }
+    },
+    {
+      path: '/instructores/instructoresSearch',
+      name: 'instructoresSearch',
+      component: InstructoresSearch
+    },
+    {
+      path: '/instructores/newInstructor',
+      name: 'newInstructor',
+      component: NewInstructor
+    },
+    {
+      path: '/instructores/editInstructor/:instructor',
+      name: 'editInstructor',
+      component: NewInstructor,
+      props: true
+    },
+    {
+      path: '/grupos/gruposSearch',
+      name: 'gruposSearch',
+      component: GruposSearch
+    },
   ]
 })
 

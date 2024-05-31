@@ -6,8 +6,15 @@
 
 <template>
     
-      <div class="container" >
-        <img class="item" id="header" src="@\assets\img\logoHorizontal.png">
+      <div class="container-header" >
+        <div class="upper-icons">
+          <v-icon icon="$menu" />
+          <img class="header-logo" src="@\assets\img\logoHorizontal.png">
+          <div class="footerButton" id="smallCircularPhoto">
+          <img src="@/components/icons/no_user_photo.png">
+        </div>
+        </div>
+        
         
         <div class="container1">
           <div class="item2" id="circularPhoto">
@@ -29,5 +36,11 @@
     height: 268px;
     width: auto;
     margin-bottom: 0;
+  }
+  .upper-icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
   }
 </style>

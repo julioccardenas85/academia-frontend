@@ -19,7 +19,7 @@
 <style scoped>
 .footer {
   height: 92px;
-  width: auto;
+  width: 100vw;
   background-color: #DDF1F4;
 
 }
@@ -28,6 +28,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+
 }
 .footerButton {
   height: 50px;

@@ -6,8 +6,9 @@ import header1 from '../components/header1.vue'
   <title>Inicia sesión</title>
   <div>
     
-    <header1></header1>
+    
     <div class="container">
+      <header1></header1>
       <h1 class="item">Iniciar sesión</h1>
       <input class="item" type="email" id="email" placeholder="Correo electrónico">
       <input class="item" type="password" placeholder="Contraseña">
@@ -23,7 +24,6 @@ import header1 from '../components/header1.vue'
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 .item {
   margin-left: auto;

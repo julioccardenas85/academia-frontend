@@ -9,14 +9,12 @@ import { ref } from "vue";
 const router = useRouter();
 
 let headers = [
-    {title: "ID", value:"idalumnos"},
-    {title: "Usuario", value:"user"},
+    {title: "ID", value:"idinstructores"},
+    {title: "Usuario", value:"usuario"},
     {title: "Nombre", value:"nombre"}, 
     {title: "Apellidos", value:"apellidos"},
     {title: "Fecha de Nacimiento", value:"fechaNacimiento", align: 'center'},
     {title: "Numero Telefónico", value:"telefono", align: 'center'},
-    {title: "Contacto", value:"contacto"},
-    {title: "Teléfono de Contacto", value:"telefonoContacto", align: 'center'},
     {title: "Editar/Eliminar", value: 'actions', sortable: false, align: 'center'},
 ]
 
@@ -25,9 +23,10 @@ const search = ref('');
 const items = ref([]);
 const page = 1;
 
-axios.get("https://localhost:7185/api/Alumno")
+axios.get("https://localhost:7185/api/Instructor")
     .then(response => {
         items.value = response.data;
+        console.log(items);
     })
     .catch(error => {
         console.error('Error al cargar datos:', error);
@@ -35,16 +34,16 @@ axios.get("https://localhost:7185/api/Alumno")
 
 const editItem = (item) => {
     router.push({ 
-        name: 'editUser', 
+        name: 'editInstructor', 
         params: { 
-          alumno: JSON.stringify(item)
+          instructor: JSON.stringify(item)
         } 
       });
 };
 
 const deleteItem = (item) => {
-    console.log(item.idalumnos);
-    axios.delete("https://localhost:7185/api/Alumno/" + item.idalumnos)
+    console.log(item.idinstructores);
+    axios.delete("https://localhost:7185/api/Instructor/" + item.idinstructores)
     .then(response => {
         console.log(response);
         window.location.reload();
@@ -60,7 +59,7 @@ const deleteItem = (item) => {
     <div>
         <div class="container">
             <div class="header">
-                <header2 :title="'Usuarios'"></header2>
+                <header2 :title="'Instructores'"></header2>
             </div>
             <v-container>
             
@@ -91,19 +90,9 @@ const deleteItem = (item) => {
                     </template>
                 </v-data-table>
             </v-container>
-            <router-link to='/users/newUser' class="link">
-                Nuevo Usuario
+            <router-link to='/instructores/newInstructor' class="link">
+                Nuevo Instructor
             </router-link>
-            <div class="foot">
-                <footer1></footer1>
-            </div>
         </div>
     </div>
 </template>
-
-<style scoped>
-.header{
-    margin-bottom: 0;
-    height: 268px;
-}
-</style>

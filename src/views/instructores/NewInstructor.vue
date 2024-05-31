@@ -10,57 +10,53 @@
     const route = useRoute();
 
     const getParams = () => {
-        if(route.params.alumno){
-            return JSON.parse(route.params.alumno);
+        if(route.params.instructor){
+            return JSON.parse(route.params.instructor);
         }
     };
 
     const setParams = () => {
-        if(alumno){
+        if(instructor){
             return ref({
-                idalumnos: alumno.idalumnos,
-                user: alumno.user,
-                nombre: alumno.nombre,
-                apellidos: alumno.apellidos,
-                fechaNacimiento: alumno.fechaNacimiento,
-                telefono: alumno.telefono,
-                contacto: alumno.contacto,
-                telefonoContacto: alumno.telefonoContacto
+                idinstructores: instructor.idinstructores,
+                usuario: instructor.usuario,
+                nombre: instructor.nombre,
+                apellidos: instructor.apellidos,
+                fechaNacimiento: instructor.fechaNacimiento,
+                telefono: instructor.telefono
                 });
         } else {
             return ref({
-                user: '',
+                usuario: '',
                 nombre: '',
                 apellidos: '',
                 fechaNacimiento: '',
-                telefono: '',
-                contacto: '',
-                telefonoContacto: ''
+                telefono: ''
                 });
         }
     };
      
-    const alumno = getParams();
+    const instructor = getParams();
     const formData = setParams();
     console.log(formData.value);
 
     const handleSave = () => {
-        axios.post("https://localhost:7185/api/Alumno/", formData.value)
+        axios.post("https://localhost:7185/api/Instructor/", formData.value)
             .then(response => {
                 console.log(response);
-                router.push('/users/usersSearch');
+                router.push('/instructores/instructoresSearch');
             })
             .catch(error => {
                 console.error(error);
             });
     };
 
-    const handleSaveEdit = (alumno, id) => {
-        console.log(alumno);
-        axios.put("https://localhost:7185/api/Alumno/" + id, alumno)
+    const handleSaveEdit = (instructor, id) => {
+        console.log(instructor);
+        axios.put("https://localhost:7185/api/Instructor/" + id, instructor)
         .then(response => {
             console.log(response);
-                router.push('/users/usersSearch');
+                router.push('/instructores/instructoresSearch');
             })
             .catch(error => {
                 console.error(error);
@@ -72,13 +68,13 @@
     <div>
         <div class="container">
             <div class="header">
-                <header2 :title="'Editar Usuario'" v-if="alumno"></header2>
-                <header2 :title="'Nuevo Usuario'" v-else=></header2>
+                <header2 :title="'Editar Instructor'" v-if="instructor"></header2>
+                <header2 :title="'Nuevo Instructor'" v-else=></header2>
             </div>
             <div class="body">
                 <form @submit.prevent="submitForm" class="form-body">
                     <label for="user" class="input-label">Usuario:</label>
-                    <input type="text" id="user" v-model="formData.user" required >
+                    <input type="text" id="user" v-model="formData.usuario" required >
 
                     <label for="nombre" class="input-label">Nombre:</label>
                     <input type="text" id="nombre" v-model="formData.nombre" required>
@@ -92,15 +88,9 @@
                     <label for="telefono" class="input-label">Teléfono:</label>
                     <input type="text" id="telefono" v-model="formData.telefono" required>
 
-                    <label for="contacto" class="input-label">Contacto:</label>
-                    <input type="text" id="contacto" v-model="formData.contacto" required>
-
-                    <label for="telefonoContacto" class="input-label">Teléfono de Contacto:</label>
-                    <input type="text" id="telefonoContacto" v-model="formData.telefonoContacto" required>
-
-                    <button v-if="alumno" type="submit" class="link form-link" @click="handleSaveEdit(formData, alumno.idalumnos)">Guardar Cambios</button>
+                    <button v-if="instructor" type="submit" class="link form-link" @click="handleSaveEdit(formData, instructor.idinstructores)">Guardar Cambios</button>
                     <button v-else type="submit" class="link form-link" @click="handleSave">Guardar</button>
-                    <router-link to='/users/usersSearch' class="link-gray">
+                    <router-link to='/instructores/instructoresSearch' class="link-gray">
                         Cancelar
                     </router-link>
                 </form>

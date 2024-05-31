@@ -1,21 +1,17 @@
 <script setup lang="ts">
   import footer1 from "@/components/footer1.vue";
+  import header2 from "@/components/header2.vue";
 </script>
 
 <template>
   <div>
     <div class="container" >
-      <img class="item" id="header" src="src\assets\img\logoHorizontal.png">
-      <div class="container1">
-        <div class="item2" id="circularPhoto">
-          <img src="src\assets\img\danzmov.jpg">
-        </div>
-        <h1 class="item2">Danzmov</h1>
-      </div>
+      <div class="header">
+                <header2 ></header2>
+            </div>
       <div class="container2">
-        <button2 class="item2">
-          <router-link to='/users/usersSearch'>Usuarios</router-link>
-        </button2>
+        <router-link to='/users/usersSearch' class="item2 link">Usuarios</router-link>
+        <router-link to='/instructores/instructoresSearch' class="item2 link">Instructores</router-link>
         <button2 class="item2">Grupos</button2>
         <button2 class="item2">Horario</button2>
         <button2 class="item2">Pagos</button2>
@@ -25,13 +21,10 @@
         <footer1></footer1>
       </div>
     </div>
+
   </div>
 </template>
 
 <style scoped>
 
-/*this overrides the main css for this page*/
-  .foot {
-  margin-top: 40px;
-  }
 </style>
