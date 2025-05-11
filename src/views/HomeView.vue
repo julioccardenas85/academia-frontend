@@ -1,12 +1,10 @@
-<script setup lang="ts">
+<script setup>
 import header1 from '../components/header1.vue'
 </script>
 
 <template>
   <title>Inicia sesión</title>
   <div>
-    
-    
     <div class="container">
       <header1></header1>
       <h1 class="item">Iniciar sesión</h1>

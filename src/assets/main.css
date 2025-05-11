@@ -1,39 +1,5 @@
 @import './base.css';
 
-/* #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-} */
-
 header1 {
   top: 0px;
 }
@@ -61,7 +27,7 @@ input {
   line-height: 40px;
   text-align: center;
 }
-button {
+.button {
   height: 54px;
   width: 315px;
   border-radius: 8px;
@@ -239,4 +205,26 @@ button2  {
 .datatable-search-input  {
   width: 300px;
   margin-bottom: 10px;
+}
+
+.select{
+  box-sizing: border-box;
+  height: 54px;
+  width: 315px;
+  border: 1px solid #808080;
+  box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+.v-overlay__scrim {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.v-overlay--active {
+  pointer-events: none !important;
+}
+
+.error-alert {
+  color: rgb(87, 3, 3);
+  font-style: italic;
 }

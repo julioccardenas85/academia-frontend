@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
   import footer1 from "../../components/footer1.vue";
 </script>
 

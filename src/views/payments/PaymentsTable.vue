@@ -9,15 +9,15 @@ const isLoading = ref(true);
 const router = useRouter();
 
 let headers = [
-    { title: "ID", value: "idUsuarios" },
-    { title: "Nombre", value: "nombre" },
-    { title: "Apellidos", value: "apellidos" },
-    { title: "Rol", value: "rol" },
-    { title: "Fecha de Nacimiento", value: "fechaNacimiento", align: 'center' },
-    { title: "Numero Telefónico", value: "telefono", align: 'center' },
-    { title: "Contacto", value: "contacto" },
-    { title: "Teléfono de Contacto", value: "telefonoContacto", align: 'center' },
-    { title: "Email", value: "email" },
+    { title: "ID Transacción", value: "id" },
+    { title: "Concepto", value: "concepto" },
+    { title: "Email MP", value: "emailComprador" },
+    { title: "Fecha", value: "fechaCreacion" },
+    { title: "ID Usuario", value: "idUsuarios" },
+    { title: "Monto", value: "monto" },
+    { title: "Payment ID MP", value: "paymentId" },
+    { title: "Payment Type MP", value: "paymentType" },
+    { title: "Estatus MP", value: "status" },
     { title: "Editar/Eliminar", value: 'actions', sortable: false, align: 'center' },
 ]
 
@@ -25,7 +25,7 @@ const search = ref('');
 
 const items = ref([]);
 
-axios.get("https://localhost:7185/api/Usuario")
+axios.get("https://localhost:7185/api/Pago")
     .then(response => {
         items.value = response.data.$values;
     })
@@ -35,18 +35,18 @@ axios.get("https://localhost:7185/api/Usuario")
         isLoading.value = false;
     });
 
-const editItem = (item) => {
+const editItem = (pago) => {
     router.push({
-        name: 'editUser',
+        name: 'editarPagoManual',
         params: {
-            usuario: JSON.stringify(item)
+            pago: JSON.stringify(pago)
         }
     });
 };
 
 const deleteItem = (item) => {
     isLoading.value = true;
-    axios.delete("https://localhost:7185/api/Usuario/" + item.idUsuarios)
+    axios.delete("https://localhost:7185/api/Pago/" + item.id)
         .then(response => {
             window.location.reload();
         })
@@ -62,10 +62,10 @@ const deleteItem = (item) => {
 <template>
     <div class="container">
         <div class="header">
-            <header2 :title="'Usuarios'"></header2>
+            <header2 :title="'Pagos'"></header2>
         </div>
-        <v-container>
 
+        <v-container>
             <v-text-field v-model="search" label="Buscar" prepend-inner-icon="mdi-magnify" variant="underlined"
                 hide-details single-line class="datatable-search-input"></v-text-field>
 
@@ -77,8 +77,11 @@ const deleteItem = (item) => {
                 </template>
             </v-data-table>
         </v-container>
-        <router-link to='/users/newUser' class="link">
-            Nuevo Usuario
+        <router-link to='/pagos/nuevoPago' class="link">
+            Nuevo Pago en Línea
+        </router-link>
+        <router-link to='/pagos/pagoManual' class="link">
+            Nuevo Pago Manual
         </router-link>
         <div class="foot">
             <footer1></footer1>

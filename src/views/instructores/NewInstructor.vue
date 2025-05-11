@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
     import header2 from "@/components/header2.vue"
     import footer1 from "@/components/footer1.vue";
     import { ref } from "vue";
@@ -38,12 +38,10 @@
      
     const instructor = getParams();
     const formData = setParams();
-    console.log(formData.value);
 
     const handleSave = () => {
         axios.post("https://localhost:7185/api/Instructor/", formData.value)
             .then(response => {
-                console.log(response);
                 router.push('/instructores/instructoresSearch');
             })
             .catch(error => {
@@ -52,10 +50,8 @@
     };
 
     const handleSaveEdit = (instructor, id) => {
-        console.log(instructor);
         axios.put("https://localhost:7185/api/Instructor/" + id, instructor)
         .then(response => {
-            console.log(response);
                 router.push('/instructores/instructoresSearch');
             })
             .catch(error => {
@@ -95,6 +91,9 @@
                     </router-link>
                 </form>
             </div>
+            <div class="foot">
+            <footer1></footer1>
+        </div>
         </div>
     </div>
 </template>
